@@ -35,11 +35,11 @@ function bananasList(arg1, arg2){
             indexArr.push(i)
         }
     }
-    if(indexArr){
+    if(indexArr.length > 0){
         return indexArr
     }else{
         return undefined
     }
 }
-let answer = bananasList("banana", "d")
+let answer = bananasList("banana", "a")
 console.log(answer)
