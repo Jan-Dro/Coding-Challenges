@@ -1,45 +1,50 @@
-// function ninetyNine(num){
-// do{
-//     if(num === 1) {
-//         console.log(`Take one down and pass it around, ${num} bottle of beer on the wall. \n ${num} bottle of beer on the wall, ${num} bottle of beer.`)
-//         num = num - 1        
-//     }else{
-//         console.log(`${num} bottles of beer on the wall, ${num} bottles of beer. \n Take one down and pass it around, ${num - 1} bottles of beer on the wall.`)
-//             num = num - 1   
-//     }
-// }while(num > 0)
-//     console.log(`Take one down and pass it around, no more bottles of beer on the wall. \n No more bottles of beer on the wall, no more bottles of beer. \n Go to the store and buy some more, 99 bottles of beer on the wall.`)
-// }
-// ninetyNine(10)
+// var productExceptSelf = function(nums) {
+//     let newNums = []
+//     let objNums = {}
 
-// function ninetyNine(num){
-//         if(num === 0){
-//             console.log(`Take one down and pass it around, no more bottles of beer on the wall. \n No more bottles of beer on the wall, no more bottles of beer. \n Go to the store and buy  some more, 99 bottles of beer on the wall.`)
-//         }else if(num === 1) {
-//             console.log(`Take one down and pass it around, ${num} bottle of beer on the wall. \n ${num} bottle of beer on the wall, ${num} bottle of beer.`)
-//             return ninetyNine(num - 1)        
+//     for(let i = 0; i < nums.length; i++){
+//         let currentNum = nums[i]
+//             if(!objNums[currentNum]){
+//                 objNums[currentNum] = currentNum
 //         }else{
-//             console.log(`${num} bottles of beer on the wall, ${num} bottles of beer. \n Take one down and pass it around, ${num - 1} bottles of beer on the wall.`)
-//                 return ninetyNine(num - 1)  
+//             objNums[currentNum] = currentNum
 //         }
 //     }
-// ninetyNine(99)
+        
+//     let answer;
+//     for(let key in objNums){
+//         if(nums[key] !== key){
+//             if (answer){
+//             answer = answer * objNums[key]
+//             }else{
+//                 answer = nums[key] * objNums[key]
+//             }
+//     }
+//         newNums.push(answer)
+//     }
+//     console.log(newNums)
+// }
+//     console.log(productExceptSelf([1,2,3,4]))
 
-function bananasList(arg1, arg2){
-    arg1 = arg1.toString()
-    arg1 = arg1.split('')
-    let indexArr = []
-    for(let i = 0; i < arg1.length; i++){
-        let currentChar = arg1[i]
-        if(currentChar === arg2){
-            indexArr.push(i)
+
+
+
+
+
+
+
+var searchRange = function(nums, target) {
+    let answer = [-1, -1];
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === target) {
+            if (answer[0] === -1) {
+                answer[0] = i; 
+            }
+            answer[1] = i; 
         }
     }
-    if(indexArr.length > 0){
-        return indexArr
-    }else{
-        return undefined
-    }
+
+    return answer;
 }
-let answer = bananasList("banana", "a")
-console.log(answer)
+console.log(searchRange([1, 1], 1))
