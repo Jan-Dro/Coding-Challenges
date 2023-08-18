@@ -84,20 +84,20 @@ valid anagram
 
 
 // contains duplicate
-[1,1,1,3,3,4,3,2,4,2] === true [1,2,3,4] === false
-function containsDuplicate(nums){
-    let numStorage = {}
-    for(let i = 0; i < nums.length; i++){
-        if(numStorage[nums[i]] === undefined){
-            numStorage[nums[i]] = 0
-        }else{
-            return true
-        }
-    }
-    return false
-}
+// [1,1,1,3,3,4,3,2,4,2] === true [1,2,3,4] === false
+// function containsDuplicate(nums){
+//     let numStorage = {}
+//     for(let i = 0; i < nums.length; i++){
+//         if(numStorage[nums[i]] === undefined){
+//             numStorage[nums[i]] = 0
+//         }else{
+//             return true
+//         }
+//     }
+//     return false
+// }
 
-console.log(containsDuplicate([1,1,2,3,4,5]))
+// console.log(containsDuplicate([1,1,2,3,4,5]))
 
 
 
@@ -172,10 +172,35 @@ console.log(containsDuplicate([1,1,2,3,4,5]))
 
 
 
+function ListNode(val, next) {
+    this.val = (val===undefined ? 0 : val)
+    this.next = (next===undefined ? null : next)
+  }
 
+  var addTwoNumbers = function(l1, l2) {
+    
+    let carry = 0
+    let start = new ListNode(0)
+    let current = start
 
+    while(l1 || l2 || carry){
+        let val1 = l1 ? l1.val : 0;
+        let val2 = l2 ? l2.val : 0;
+        
+        total = val1 + val2 + carry
+        carry = Math.floor(total / 10);
+        digit = total % 10
 
+        current.next = new ListNode(digit)
+        current = current.next
 
-
-
+        if(l1){
+            l1 = l1.next
+        }
+        if(l2){
+            l2 = l2.next
+        }    
+    }
+    return start.next
+}
 

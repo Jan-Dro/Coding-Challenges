@@ -1,19 +1,30 @@
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 class Solution(object):
-    def twoSum(self, nums, target):
-        complementedNums = {}
+    def addTwoNumbers(self, l1, l2):
+        carry = 0
+        start = ListNode(0)
+        current = start
 
-        for i, num in enumerate(nums):
-            complement = target - num
+        while l1 or l2 or carry:
+            val1 = l1.val if l1 else 0
+            val2 = l2.val if l2 else 0
 
-            if complement in complementedNums:
-                return [complementedNums[complement], i]
-            
-            complementedNums[num] = i
+            total = val1 + val2 + carry
+            carry = total // 10
+            digit = total % 10
 
-        return []
-    
-nums = [2,7,11,15]
-target = 9
-solution = Solution()
-results = solution.twoSum(nums, target)
-print(results)
+            current.next = ListNode(digit)
+            current = current.next
+
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
+
+        return start.next
+
+
