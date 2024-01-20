@@ -1,17 +1,11 @@
-def maxProfit(prices):
-    left = 0
-    right = 1
-    maxPrice = 0
-    
+def containsDuplicate(nums):
+    numDict = {}
 
-    while right < len(prices):
-        if prices[left] < prices[right]:
-            profit = prices[right] - prices[left]
-            maxPrice = max(maxPrice, profit)
+    for num in nums:
+        if num in numDict:
+            return True
         else:
-            left = right
-        right += 1
-    return maxPrice
+            numDict[num] = num
+    return False
 
-
-print(maxProfit([7,1,5,3,6,4]))
+print(containsDuplicate([1,2,3,1]))
