@@ -1,33 +1,14 @@
-# def productExceptSelf(nums):
-#     res = [1] * (len(nums))
-#     # print(res)
+def findMin(nums):
+    start = 0
+    end = len(nums) - 1
+    minimumNum = nums[0]
 
-#     prefix = 1
-#     for i in range(len(nums)):
-#         res[i] = prefix
-#         print(res[i], res)
-#         prefix *= nums[i]
-#         print('--------')
-#         # print(prefix)
-#     postfix = 1
-#     for i in range(len(nums) -1, -1, -1):
-#         res[i] *= postfix
-#         postfix *= nums[i]
-#     return res    
+    while start <= end:
+        minimumNum = min(minimumNum ,nums[start], nums[end])
+        start += 1
+        end -= 1
+    return minimumNum
 
-# print(productExceptSelf([1,2,3,4]))
+print(findMin([11,13,15,17]))
 
 
-def maxSubArray(nums):
-    maxSub = nums[0]
-    currentSum = 0
-
-    for number in nums:
-        if currentSum < 0:
-            currentSum = 0
-        currentSum += number
-        maxSub = max(maxSub, currentSum)
-    return maxSub
-
-
-print(maxSubArray([5,4,-1,7,8]))
