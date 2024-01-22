@@ -1,8 +1,9 @@
-def reverseBits(n):
-    rev = 0
-    for _ in range(32):
-        rev = (rev << 1) | (n & 1)
-        n >>= 1
-    return rev
+def climbingStairs(n):
+    one, two = 1, 1
+    for i in range(n - 1):
+        temp = one
+        one = one + two
+        two = temp
+    return one
 
-print(reverseBits(00000010100101000001111010011100))
+print(climbingStairs(9))
