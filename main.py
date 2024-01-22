@@ -1,20 +1,8 @@
-#Binary
+def reverseBits(n):
+    rev = 0
+    for _ in range(32):
+        rev = (rev << 1) | (n & 1)
+        n >>= 1
+    return rev
 
-# def countBits(n):
-#     res = [bin(i).count('1') for i in range(n + 1)]
-#     return res
-
-# print(countBits(5)) 
-
-
-
-def missingNum(nums):
-    nums.sort()
-    
-    for i, number in enumerate(nums):
-        if number != i:
-            return i
-    return len(nums)
-        
-
-print(missingNum([0,1]))
+print(reverseBits(00000010100101000001111010011100))
