@@ -1,9 +1,10 @@
 #Binary
 
+def hammingWeight(n):
+    count = 0
+    while n:
+        count += n & 1
+        n >>= 1
+    return count
 
-def getSum(a,b):
-    numberList = [a,b]
-    return sum(numberList)
-
-
-print(getSum(1,2))
+print(hammingWeight(11111111111111111111111111111101)) 
