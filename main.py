@@ -1,49 +1,21 @@
-# def longestCommonSubsequence(text1, text2):
-#     numStorage = {}
-#     count = 0
 
-#     numList = list(text1)
-#     text2 = list(text2)
+def longestSubString(s):
+    start = 0
+    end = 0
 
-#     for letter in text2:
-#         if letter in numStorage:
-#             count+= 1
-#         else:
-#             numStorage[letter] = letter
-#     return count
+    numbDict = {}
+    max_length = 0
+    tempCount = 0
 
+    while end < len(s):
+        char = s[end]
+        if char not in numbDict or numbDict[char] < start:
+            numbDict[char] = end
+            end += 1
+            tempCount = max(tempCount, end - start)
+        else:
+            start = numbDict[char] + 1
 
-# print(longestCommonSubsequence('abcde', 'ace'))
+    return max(tempCount, max_length)
 
-
-def longestCommonSubsequence(text1, text2):
-    # list1 = list(text1)
-    # list2 = list(text2)
-
-    # biggestNumber = max(list1, list2, key=len)
-    # # biggestNumber.sort()
-    # biggestNumber = set(biggestNumber)
-    # smallestList = min(list1, list2, key=len)
-    # # smallestList.sort()
-    # smallestList = set(smallestList)
-
-
-    # print(smallestList, biggestNumber)
-
-
-    # answer = biggestNumber.intersection(smallestList)
-
-    # return answer
-
-    dp = [[0 for j in range(len(text2) + 1)] for i in range(len(text1) + 1)]
-
-    for i in range(len(text1) -1, -1, -1):
-        for j in range(len(text2) -1, -1, -1):
-            if text1[i] == text2[j]:
-                dp[i][j] = 1 + dp[i + 1][j + 1]
-            else:
-                dp[i][j] = max(dp[i][j + 1], dp[i + 1][j])
-
-    return dp[0][0]
-
-print(longestCommonSubsequence('ezupkr', 'ubmrapg'))
+print(longestSubString('pwwkew'))
