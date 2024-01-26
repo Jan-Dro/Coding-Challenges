@@ -1,21 +1,11 @@
+def anagram(str1, str2):
+    sortedStr1 = ''.join(sorted(str1))
+    sorted2 = ''.join(sorted(str2))
 
-def longestSubString(s):
-    start = 0
-    end = 0
 
-    numbDict = {}
-    max_length = 0
-    tempCount = 0
+    if sortedStr1 == sorted2:
+        return True
+    return False
 
-    while end < len(s):
-        char = s[end]
-        if char not in numbDict or numbDict[char] < start:
-            numbDict[char] = end
-            end += 1
-            tempCount = max(tempCount, end - start)
-        else:
-            start = numbDict[char] + 1
 
-    return max(tempCount, max_length)
-
-print(longestSubString('pwwkew'))
+print(anagram('anagram','nagaram'))
