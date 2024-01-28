@@ -1,11 +1,14 @@
-def anagram(str1, str2):
-    sortedStr1 = ''.join(sorted(str1))
-    sorted2 = ''.join(sorted(str2))
+def group(strs):
+    answer = {}
+
+    for word in strs:
+        sorted_word = ''.join(sorted(word))
+        # print(word, '-----', sorted_word)
+        if sorted_word in answer:
+            answer[sorted_word].append(word)
+        else:
+            answer[sorted_word] = [word]
+    return list(answer.values())
 
 
-    if sortedStr1 == sorted2:
-        return True
-    return False
-
-
-print(anagram('anagram','nagaram'))
+print(group(["eat","tea","tan","ate","nat","bat"]))
