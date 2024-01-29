@@ -1,14 +1,20 @@
-def group(strs):
-    answer = {}
+def isValid(s):
+    checker = {
+        ']': '[',
+        '}': '{',
+        ')': '('
+    }
 
-    for word in strs:
-        sorted_word = ''.join(sorted(word))
-        # print(word, '-----', sorted_word)
-        if sorted_word in answer:
-            answer[sorted_word].append(word)
-        else:
-            answer[sorted_word] = [word]
-    return list(answer.values())
+    stack = []
+    for char in s:
+        if char in checker.values():
+            stack.append(char)
+        elif char in checker:
+            if not stack or stack.pop() != checker[char]:
+                return False
+
+    return not stack
 
 
-print(group(["eat","tea","tan","ate","nat","bat"]))
+
+print(isValid("()[]{}"))
