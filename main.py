@@ -1,20 +1,15 @@
-def isValid(s):
-    checker = {
-        ']': '[',
-        '}': '{',
-        ')': '('
-    }
+def isPalindrome(s):
+    
+    cleanString = [i for i in s if i.isalnum()]
+    cleanString = ''.join(cleanString)
+    cleanString = cleanString.lower()
 
-    stack = []
-    for char in s:
-        if char in checker.values():
-            stack.append(char)
-        elif char in checker:
-            if not stack or stack.pop() != checker[char]:
-                return False
+    if cleanString == cleanString[::-1]:
+        return True
+    else:
+        return False
+        
 
-    return not stack
+    
 
-
-
-print(isValid("()[]{}"))
+print(isPalindrome("A man, a plan, a canal: Panama"))
