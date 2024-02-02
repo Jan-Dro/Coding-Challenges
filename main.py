@@ -1,20 +1,95 @@
-def trap(height):
-    currentTrap = 0
-    first = 0
-    second = 1
-    max_height = max(height)
+# def armstrong(nums):
+#     nums1 = list(str(nums))
+#     testNum = len(nums1)
+#     answer = 0
 
-    while second < len(height):
-            if height[first] == 0:
-                first += 1
-                second += 1
-            elif height[first] > 0:
-                if height[first] <= height[second] or height[first] == max_height:
-                    for i in range(first +1, second):
-                        currentTrap += height[first] - height[i]
-                    first = second
-                second += 1
-    return currentTrap
+#     for num in nums1:
+#         answer += (int(num) ** testNum)
+
+#     if answer == int(nums):
+#         return True
+#     return False
 
 
-print(trap([0,1,0,2,1,0,1,3,2,1,2,1]))
+# print(armstrong("371"))
+
+
+
+
+# def longestPalindromeSeq(s):
+    # characters = {}
+
+    # if len(s) == 1:
+    #     return 1
+
+    # for char in s:
+    #     if char in characters:
+    #         characters[char] += 1
+    #     else:
+    #         characters[char] = 1
+
+    # placeholder = []
+
+    # for char in s:
+    #     if characters[char] > 1:
+    #         placeholder.append(char)
+    
+    # placeholder = ''.join(placeholder)
+    # longest_palindrome = ""
+
+    # for i in range(len(placeholder)):
+    #     for j in range(i, len(placeholder)):
+    #         substr = placeholder[i:j+1]
+    #         if substr == substr[::-1] and len(substr) > len(longest_palindrome):
+    #             longest_palindrome = substr
+
+    # return len(longest_palindrome)
+
+#     n = len(s)
+
+#     if n <= 1:
+#         return n
+    
+#     longest_length = 1
+
+#     for i in range(n):
+#         for j in range(i, n):
+#             substr = s[i:j+1]
+#             if substr == substr[::-1]:
+#                 longest_length = max(longest_length, len(substr)) 
+#     return longest_length
+
+# print(longestPalindromeSeq('bbbab'))
+
+
+
+
+# class BasicEmployee:
+#     def __init__(self, name, employee_id, department):
+#         self.name = name
+#         self.employee_id = employee_id
+#         self.department = department
+
+# class Progammer(BasicEmployee):
+#     def __init__(self, name, employee_id, department, languages):
+#         super().__init__(name, employee_id, department)
+#         self.language = languages
+
+
+
+def longestPalindromeSeq(s):
+    n = len(s)
+
+    if n <= 1:
+        return n
+    
+    longest_length = 1
+
+    for i in range(n):
+        for j in range(i, n):
+            substr = s[i:j+1]
+            if substr == substr[::-1]:
+                longest_length = max(longest_length, len(substr)) 
+    return longest_length
+
+print(longestPalindromeSeq('bbbab'))
