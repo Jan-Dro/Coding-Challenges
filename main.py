@@ -1,12 +1,23 @@
-def sortColors(nums):
-    if not nums:
-        return nums
+def searchInserted(nums, target):
+    start = 0
+    end = len(nums) - 1
+
+
+
+    while start < len(nums) - 1:
+        if nums[start] == target:
+            return start
+        elif nums[end] == target:
+            return end
+        else:
+            start += 1
+            end -= 1
+
     
-    pivot = nums[0]
-    less = [i for i in nums[1:] if i <= pivot]
-    greater = [i for i in nums[1:] if i > pivot]
+    tempNums = nums
+    tempNums.append(target)
+    sortedNums = sorted(tempNums)
+    index = sortedNums.index(target)
+    return index
 
-    return sortColors(less) + [pivot] + sortColors(greater)
-
-
-print(sortColors([2,0,2,1,1,0]))
+print(searchInserted([4,5,1,3], 3))
