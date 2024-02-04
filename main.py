@@ -1,23 +1,13 @@
-def searchInserted(nums, target):
-    start = 0
-    end = len(nums) - 1
+def lengthOfLastWord(s):
+    split = s.split(' ')
+    split = list(split)
+    newList = []
 
-
-
-    while start < len(nums) - 1:
-        if nums[start] == target:
-            return start
-        elif nums[end] == target:
-            return end
+    for word in split:
+        if word == '':
+            continue
         else:
-            start += 1
-            end -= 1
+            newList.append(word)
 
-    
-    tempNums = nums
-    tempNums.append(target)
-    sortedNums = sorted(tempNums)
-    index = sortedNums.index(target)
-    return index
-
-print(searchInserted([4,5,1,3], 3))
+    return len(newList[-1])
+print(lengthOfLastWord(" fly me to the moon "))
