@@ -1,13 +1,17 @@
-def lengthOfLastWord(s):
-    split = s.split(' ')
-    split = list(split)
-    newList = []
+def plusOne(digits):
 
-    for word in split:
-        if word == '':
-            continue
-        else:
-            newList.append(word)
+    numStorage = ''
 
-    return len(newList[-1])
-print(lengthOfLastWord(" fly me to the moon "))
+    for number in digits:
+        numStorage += str(number)
+
+    numStorage = str(int(numStorage) + 1)
+    answer = []
+
+    for number in numStorage:
+        answer.append(int(number))
+
+    return answer
+
+
+print(plusOne([9]))
