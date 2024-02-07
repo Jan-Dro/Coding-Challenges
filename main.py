@@ -1,19 +1,20 @@
-def countStudents(students, sandwiches):
-    count = 0
-    while students and sandwiches:
-        if students[0] == sandwiches[0]:
-            students.pop(0)
-            sandwiches.pop(0)
-            count = 0  
+def frequencySort(s):
+
+    charCount = {}
+
+    for char in s:
+        if char in charCount:
+            charCount[char] += 1
         else:
-            student = students.pop(0)
-            students.append(student)
-            count += 1
+            charCount[char] = 1
 
-        if count >= len(students):
-            break
+    charCountSorted = sorted(charCount.items(), key=lambda x: x[1], reverse=True)
 
-    return len(students)
+    res = ''
+    for count, char in charCountSorted:
+        res += char * count
 
-print(countStudents([1,1,1,0,0,1], [1,0,0,0,1,1]))
-print(countStudents([1,1,0,0], [0,1,0,1]))
+    return res
+
+
+print(frequencySort("aaAddppp"))
