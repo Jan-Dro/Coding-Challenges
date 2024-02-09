@@ -1,20 +1,21 @@
-def frequencySort(s):
+import math
 
-    charCount = {}
-
-    for char in s:
-        if char in charCount:
-            charCount[char] += 1
-        else:
-            charCount[char] = 1
-
-    charCountSorted = sorted(charCount.items(), key=lambda x: x[1], reverse=True)
-
-    res = ''
-    for count, char in charCountSorted:
-        res += char * count
-
-    return res
+def numSquare(n):
+    numStorage = []
+    for num in range(1, n+1):
+        sqrt_num = math.sqrt(num)
+        if sqrt_num.is_integer():
+            numStorage.append(num)
 
 
-print(frequencySort("aaAddppp"))
+    dp = [float('inf')] * (n + 1)
+    dp[0] = 0
+
+    for i in range(1, n + 1):
+        for num in numStorage:
+            if num <= i:
+                dp[i] = min(dp[i], dp[i - num] + 1)
+
+    return dp[n]
+
+print(numSquare(13))
