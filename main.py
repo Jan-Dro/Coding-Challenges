@@ -1,21 +1,36 @@
-import math
+# def isMatch(s, p):
+#     isvalid = '*'
+#     valid1 = '?'
 
-def numSquare(n):
-    numStorage = []
-    for num in range(1, n+1):
-        sqrt_num = math.sqrt(num)
-        if sqrt_num.is_integer():
-            numStorage.append(num)
+#     if len(p) < 2:
+#         if p == '?' or p == '*':
+#             return True
+
+#     validationChecker = True
+#     for i, char in enumerate(s):
+#         if char == p[i] or char == isvalid or char == valid1:
+#             print(p[i])
+#             continue
+#         else:
+#             return False
+#     return validationChecker
+
+# print(isMatch('aa', '*a'))
 
 
-    dp = [float('inf')] * (n + 1)
-    dp[0] = 0
 
-    for i in range(1, n + 1):
-        for num in numStorage:
-            if num <= i:
-                dp[i] = min(dp[i], dp[i - num] + 1)
 
-    return dp[n]
+def majorityElement(nums):
+    placeHolder = {}
 
-print(numSquare(13))
+    for number in nums:
+        if number in placeHolder:
+            placeHolder[number] += 1
+        else:
+            placeHolder[number] = 0
+
+    maximum = max(placeHolder, key=placeHolder.get)
+    return maximum
+    
+
+print(majorityElement([2,2,2,1,0,1]))
