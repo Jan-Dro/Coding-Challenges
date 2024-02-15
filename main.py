@@ -1,36 +1,13 @@
-# def isMatch(s, p):
-#     isvalid = '*'
-#     valid1 = '?'
-
-#     if len(p) < 2:
-#         if p == '?' or p == '*':
-#             return True
-
-#     validationChecker = True
-#     for i, char in enumerate(s):
-#         if char == p[i] or char == isvalid or char == valid1:
-#             print(p[i])
-#             continue
-#         else:
-#             return False
-#     return validationChecker
-
-# print(isMatch('aa', '*a'))
+def largestPerimeter(nums):
+    nums.sort(reverse=True)  # Sort in descending order
+    for i in range(len(nums) - 2):
+        if nums[i + 2] < nums[i] + nums[i + 1]:
+            return nums[i] + nums[i + 1] + nums[i + 2]
+    return 0  
 
 
+test_case = [1, 12, 1, 2, 5, 50, 3]
+print("Largest Perimeter:", largestPerimeter(test_case))
 
 
-def majorityElement(nums):
-    placeHolder = {}
-
-    for number in nums:
-        if number in placeHolder:
-            placeHolder[number] += 1
-        else:
-            placeHolder[number] = 0
-
-    maximum = max(placeHolder, key=placeHolder.get)
-    return maximum
-    
-
-print(majorityElement([2,2,2,1,0,1]))
+# output 12
