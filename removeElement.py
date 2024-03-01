@@ -1,7 +1,7 @@
 def removeElement(nums, val):
 
         start = len(nums) -1
-        
+
         while start >= 0:
             if nums[start] == val:
                 nums.pop(start)
@@ -10,3 +10,7 @@ def removeElement(nums, val):
         return len(nums)
 
 print(removeElement([3,3], 3))
+
+
+
+
