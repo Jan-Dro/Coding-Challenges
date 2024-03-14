@@ -1,14 +1,14 @@
-def maximumSubArray(nums):
-    max_so_far = nums[0]
-    max_ending = nums[0]
-    print(len(nums))
-    for i in range(1, len(nums)):
-        max_ending = max(nums[i], max_ending + nums[i])
-        max_so_far = max(max_ending, max_so_far)
-    return max_so_far
+# def maximumSubArray(nums):
+#     max_so_far = nums[0]
+#     max_ending = nums[0]
+#     print(len(nums))
+#     for i in range(1, len(nums)):
+#         max_ending = max(nums[i], max_ending + nums[i])
+#         max_so_far = max(max_ending, max_so_far)
+#     return max_so_far
 
 
-print(maximumSubArray([5,4,-1,7,8]))
+# print(maximumSubArray([5,4,-1,7,8]))
 
 #  """first nums[0]  == 5, so max so far is 5;
 
@@ -23,3 +23,14 @@ print(maximumSubArray([5,4,-1,7,8]))
 # itearion = 4, nums[4] == 8, 8 + 15 = 23; maxSofar = 23, 23 > 15
 # returns 23
 # """
+
+
+
+def maximumSubarray(nums):
+    maxSoFar = nums[0]
+    maxEnding = nums[0]
+    for i in range(1, len(nums)):
+        maxEnding = max(nums[i], maxEnding, maxEnding + nums[i])
+        maxSoFar = max(maxEnding, maxSoFar)
+    return maxSoFar
+
