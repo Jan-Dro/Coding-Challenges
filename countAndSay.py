@@ -5,9 +5,7 @@ def countAndSay(n):
     
     x = countAndSay(n -1)
     s = ''
-
     y = x[0]
-
     count = 1
 
     for i in range(1, len(x)):
