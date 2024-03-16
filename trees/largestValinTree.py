@@ -39,4 +39,5 @@ class Solution(object):
             find(result, level + 1, root.left)
             find(result, level +1, root.right)
         find(result, level, root)
+        
         return result
