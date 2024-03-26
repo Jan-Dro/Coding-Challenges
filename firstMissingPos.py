@@ -1,19 +1,37 @@
 def firstMissingPos(nums):
-    nums = sorted(nums)
-    newList = []
-    for num in nums:
-        if num > 0:
-            newList.append(num)
-    currentNum = newList[0]
-    if not newList or newList[0] > 1:
-        return 1
-    for nums in newList[1:]:
-        if currentNum + 1 == nums:
-            currentNum = num
+        oneIsThere = False
+        if 1 in nums:
+            oneIsThere = True
         else:
-            return currentNum + 1
+            return 1
+        
+        currentNum = 0
+        nextNum = 1
+        newNum = []
+        for num in nums:
+             if num < 0:
+                  continue
+             else:
+                  newNum.append(num)
 
-    return newList[-1] + 1
+        newNum = sorted(newNum)
 
+        while nextNum <= len(newNum) - 1:
+            if newNum[currentNum] < 0:
+                currentNum += 1
+                nextNum += 1
+            if newNum[currentNum] + 1 == newNum[nextNum] or newNum[currentNum] == newNum[currentNum + 1]:
+                currentNum += 1
+                nextNum += 1
+            else:
+                return  newNum[currentNum] + 1
+        return newNum[len(newNum) - 1] + 1
+            
 
-print(firstMissingPos([2,0]))
+    
+
+print(firstMissingPos([-10,-3,-100,-1000,-239,1]))
+print(firstMissingPos([1,2,0]))
+print(firstMissingPos([3,4,-1,1]))
+print(firstMissingPos([7,8,9,11,12]))
+print(firstMissingPos([1,1001]))
